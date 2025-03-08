@@ -50,7 +50,8 @@ pipeline {
             steps {
                 sh '''
                     npm install serve
-                    node_modules/.bin/serve -s build
+                    npx serve --version
+                    node_modules/.bin/serve -s build & disown
                     sleep 10
                     npx playwright test --reporter=html
                 '''
