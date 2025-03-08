@@ -51,7 +51,7 @@ pipeline {
                 sh '''
                     npm install serve
                     npx serve --version
-                    node_modules/.bin/serve -s build & disown
+                    setsid npx serve -s build > serve.log 2>&1 &
                     sleep 10
                     npx playwright test --reporter=html
                 '''
